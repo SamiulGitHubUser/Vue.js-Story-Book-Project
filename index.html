@@ -4,13 +4,50 @@
         <meta>
         <title>Story Book</title>
         <link rel="stylesheet" href="style.css">
-        <script scr="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     </head>
     <body>
-        <script scr="app.js"></script>
-
+        <script src="app.js"></script>
         <div id="vue-app">
-            <h1>{{ message }}</h1>
-          </div>
+            <h1>Data & Methods:</h1>
+            <p>{{ message }}</p>
+            <p>{{ greeting('afternoon!' )}}</p>
+
+            <br>
+            <h1>Data Binding:</h1>
+            <p>Go to Learning Site: <a v-bind:href="website">W3 School</a> or</p>
+            <p v-html="websiteTag">Here</p>
+
+            <br>
+            <!-- Events-->
+            <h1>Events</h1>
+            <button v-on:click="add(1)">Add Age</button>
+            <button @click="subtract(1)">Subtract Age</button>
+            <button v-on:dblclick="add(10)">Double Click  +10Years</button>
+            <button @dblclick="subtract(10)">Double Click -10Years</button>
+            <p>My age is {{age}}</p>
+            <a v-on:click.prevent="click" href="https://www.w3schools.com/">Click me to check 'v-on:click.prevent'</a>
+
+            <!-- Mouse Events-->
+            <h3>Mouse Event:</h3>
+            <div id="canvas" v-on:mousemove="updateXY">
+                ({{x}},{{y}})
+            </div>
+
+            <!-- Key Events-->
+            <h3>Key Events</h3>
+            <p>*go to console for looking output.</p>
+            <label>Name</label>
+            <input v-on:keyup.enter="logName" type="text">
+            <label>Age</label>
+            <input v-on:keyup.alt.enter="logAge" type="text">
+
+            <br>
+            <h1>Etc</h1>
+
+        </div>
+
+
+        
     </body>
 </html>
